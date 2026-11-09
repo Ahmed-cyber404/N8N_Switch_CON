@@ -1,0 +1,583 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        224
+      ],
+      "id": "c301893a-50c8-4179-ae58-b51d805e1267",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -80,
+        224
+      ],
+      "id": "0f143a6f-fe77-40a4-9212-1f20526dbab1",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['E-Mail'] }}",
+                    "rightValue": "gmail",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "d9752a75-0d39-413f-88b1-6e459710596b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Gmail"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "dac8d5bd-87cf-4381-a755-301502746445",
+                    "leftValue": "={{ $json['E-Mail'] }}",
+                    "rightValue": "yahoo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Yahoo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "739dd42e-d14f-4dfb-8013-729c73b7eb4d",
+                    "leftValue": "={{ $json['E-Mail'] }}",
+                    "rightValue": "outlook",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "outlook"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "9492c12f-4c2c-4fc4-bb45-2d24dfac4e76",
+                    "leftValue": "={{ $json['E-Mail'] }}",
+                    "rightValue": "icloud",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "icloud"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "12e35855-690d-4f10-9301-e1f169917bd1",
+                    "leftValue": "={{ $json['E-Mail'] }}",
+                    "rightValue": "proton",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "proton"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.5,
+      "position": [
+        144,
+        224
+      ],
+      "id": "cd8c0837-b187-48e1-8c1e-82abd2110b31",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 411536328,
+          "mode": "list",
+          "cachedResultName": "Sheet4",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=411536328"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "E-Mail": "={{ $json['E-Mail'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        89.8960000000001
+      ],
+      "id": "d3cd6aab-ff9d-4707-9f17-f4fc1d7e6346",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1643625560,
+          "mode": "list",
+          "cachedResultName": "Sheet5",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=1643625560"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "E-Mail": "={{ $json['E-Mail'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        208
+      ],
+      "id": "055a1cc1-4ec6-4660-9535-0a5c1f8196d2",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1324547883,
+          "mode": "list",
+          "cachedResultName": "Sheet6",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=1324547883"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "E-Mail": "={{ $json['E-Mail'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        320
+      ],
+      "id": "38b8586a-2d7e-4de2-86d2-06da8b122d2e",
+      "name": "Append row in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1324547883,
+          "mode": "list",
+          "cachedResultName": "Sheet6",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=1324547883"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "E-Mail": "={{ $json['E-Mail'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        432
+      ],
+      "id": "96e5472e-afb3-4a79-b82a-425dd48f85cc",
+      "name": "Append row in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g",
+          "mode": "list",
+          "cachedResultName": "N8N Test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2056036548,
+          "mode": "list",
+          "cachedResultName": "Sheet8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jwlVU9HQoAJYpR9H2FQg96hb0FFJYSty3s-_9QHfm3g/edit#gid=2056036548"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "E-Mail": "={{ $json['E-Mail'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        544
+      ],
+      "id": "cb4b23da-4161-43a0-920a-8dd046863a9b",
+      "name": "Append row in sheet4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "o23WN5eSEfvBX4fW",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "2273b13b-2c6e-4daa-ba2a-8382dc08c67c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9dbc01a16ee5ef81ca6d9825e99190d82decca4fae9f14e2015499fc0d482f30"
+  },
+  "nodeGroups": [],
+  "id": "7RUYptjDxqzfQfgb",
+  "tags": []
+}
